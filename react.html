@@ -1,0 +1,126 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>React Project</title>
+
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        
+        <div id="container"></div>
+
+        <script src="https://unpkg.com/supersimpledev/react.js"></script>
+        <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+        <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+        
+        <script type="text/babel">
+
+
+            function DisplayProduct({ProductName,Price,discountPrice,imgSrc}){
+                return(
+                    <div>
+                        <img src={imgSrc} width="150" />
+                        <p>
+                        {ProductName}   
+                        </p>
+
+                        {
+                            discountPrice? (
+                            <p>
+                                <del>
+                                    Price: {Price}
+                                </del>
+                            </ p>
+                            ) :  (
+                            <p>
+                                    Price: {Price}
+                            </ p>
+                            )
+                        }
+                        
+
+                        {discountPrice &&(
+                            <p>
+                                Discounted Price: {discountPrice}
+                            </p>
+                            )
+                        }
+                        
+                        <button>
+                            Add To Cart
+                        </button>
+
+                    </ div>
+                )
+            }
+
+
+            function App(){
+            return(
+                
+            <div>  
+                    <DisplayProduct 
+                    ProductName="Cotton Socks" 
+                    Price="$10.90"
+                    discountPrice="$5.45" 
+                    imgSrc="./cotton-socks.png"
+                    /> 
+                    <br /> 
+
+                    <DisplayProduct 
+                    ProductName="Tennis Balls" 
+                    Price="$6.00" 
+                    imgSrc="./tennis-balls.png"
+                    />
+                    <br /> 
+
+                    <DisplayProduct 
+                    ProductName="Plain T-Shirts" 
+                    Price="$7.99" 
+                    imgSrc="./plain-t-shirt.png"
+                    /> 
+                    <br /> 
+
+                </div>
+                );
+
+            }
+
+            const container = document.querySelector('#container')
+            const root = ReactDOM.createRoot(container)
+            root.render(<App />)
+
+        </script>
+
+    </body>
+    </html>
+
+
+    <!-- 
+        <p>
+                        Cotton Socks
+                    </p>
+                    <p>
+                        Price: $10.90
+                    </p>
+                    <button type="submit"> Add to Cart </ button>
+                -->
+
+                    <!-- {!discountPrice&&(
+                            <p>
+                                    Price: {Price}
+                            </ p>
+                            )
+                        }
+
+                        {discountPrice &&(
+                            <p>
+                                <del>
+                                    Price: {Price}
+                                </del>
+                            </ p>
+                            )
+                        }
+                -->

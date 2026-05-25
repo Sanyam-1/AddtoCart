@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+</head>
+<body>
+    
+    <div id="container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+       
+    <script type="text/babel">
+
+        
+        
+        function LoginForm(){
+            return(
+            <div>
+
+                <input type="email" placeholder="Enter Your Email" />
+                <br />
+                <input type="Password" placeholder="Enter Your Password" />
+                <br />
+                <button type="Submit" > Login </button>
+                <button type="Submit"> Sign Up </button>
+                
+            </ div>
+
+            );    
+        }
+
+        function App(){
+            
+            return(
+               <div>
+                <p>
+                    Hello Welcome to my Website
+                </p>           
+                <LoginForm />
+                </ div>
+            );
+        }
+        const container = document.querySelector('#container')
+        const root = ReactDOM.createRoot(container)
+        root.render(<App />)
+
+    </script>
+
+
+</body>
+</html>
