@@ -30,14 +30,14 @@
             return(
                 <div>
                         
-                    {sender==="User" && (
+                    {sender==="user" && (
                         <img 
                         src="./Images/user.png" 
                         width="40" 
                         />
                     )}
                     {message}
-                    {sender==="Robot" && (
+                    {sender==="robot" && (
                         <img 
                         src="./Images/robot.png" 
                         width="40" 
@@ -49,11 +49,10 @@
             )
         }
 
-        function App(){
-            
+        function ChatMessagesArray(){
             const ChatMessages = [{
                 message: "hello chatbot",
-                sender: "User",
+                sender: "user",
                 id: "id1"
             },{
                 message: "Hello! How can I help you?",
@@ -67,30 +66,33 @@
                 message: "Today is September 27",
                 sender: "robot",
                 id: "id4"
-            }
-            ];
+            }];
 
             return(
-                <div>
-                    <ChatBox />
+                <>
 
-                    <ChatMessage 
-                    message="hello chatbot" 
-                    sender="User" 
-                    /> 
-                    <ChatMessage 
-                    message="Hello! How can I help you?" 
-                    sender="robot" 
-                    /> 
-                    <ChatMessage 
-                    message="can you get me todays date?" 
-                    sender="User" 
-                    /> 
-                    <ChatMessage 
-                    message="Today is September 27" 
-                    sender="robot" 
-                    /> 
-                </div>
+                    {ChatMessages.map((chatMessage)=>{
+                            return(
+                                <ChatMessage 
+                                    message={chatMessage.message} 
+                                    sender={chatMessage.sender}
+                                    key = {chatMessage.id}
+                                /> 
+                            )
+                    })}
+                </>
+            )
+
+        }
+
+        function App(){
+            
+            
+            return(
+                <>
+                    <ChatBox />
+                    <ChatMessagesArray />
+                </>
             )
         }
 
