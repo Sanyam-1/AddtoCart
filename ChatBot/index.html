@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot with React</title>
+</head>
+<body>
+    
+    <div class="container"></div>
+    
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+       
+
+    <script type="text/babel">
+
+        function ChatBox(){
+            return(
+                <div>
+                    <input type="text" placeholder="Enter Your Questions Here" size="40"  />
+                    <button type="submit">Submit </button>
+                </div>
+            )
+        }
+
+
+        function ChatMessage({message,sender}){
+            return(
+                <div>
+                        
+                    {sender==="User" && (
+                        <img 
+                        src="./Images/user.png" 
+                        width="40" 
+                        />
+                    )}
+                    {message}
+                    {sender==="Robot" && (
+                        <img 
+                        src="./Images/robot.png" 
+                        width="40" 
+                        />
+                    )}
+
+
+                </div>
+            )
+        }
+
+        function App(){
+            
+            const ChatMessages = [{
+                message: "hello chatbot",
+                sender: "User",
+                id: "id1"
+            },{
+                message: "Hello! How can I help you?",
+                sender: "robot",
+                id: "id2"
+            },{
+                message: "Can you get me todays date?",
+                sender: "user",
+                id: "id3"
+            },{
+                message: "Today is September 27",
+                sender: "robot",
+                id: "id4"
+            }
+            ];
+
+            return(
+                <div>
+                    <ChatBox />
+
+                    <ChatMessage 
+                    message="hello chatbot" 
+                    sender="User" 
+                    /> 
+                    <ChatMessage 
+                    message="Hello! How can I help you?" 
+                    sender="robot" 
+                    /> 
+                    <ChatMessage 
+                    message="can you get me todays date?" 
+                    sender="User" 
+                    /> 
+                    <ChatMessage 
+                    message="Today is September 27" 
+                    sender="robot" 
+                    /> 
+                </div>
+            )
+        }
+
+        const container = document.querySelector('.container')
+        const root = ReactDOM.createRoot(container)
+        root.render(<App />)
+    </script>
+
+
+
+</body>
+</html>
